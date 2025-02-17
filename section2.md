@@ -61,6 +61,7 @@ Similar to LionGuard, the evaluation metric here uses **PR-AUC** instead of F1-S
 
 ## **IV. Results**
 
+![Results](results.png)
 
 
 ---
