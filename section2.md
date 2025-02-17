@@ -59,6 +59,12 @@ Similar to LionGuard, the evaluation metric here uses **PR-AUC** instead of F1-S
 
 ---
 
+## **IV. Results**
+
+
+
+---
+
 ## **V. Models**
 
 1. **Rule-based models (Presidio)** are highly controllable but **lack contextual understanding**.
@@ -79,4 +85,5 @@ Similar to LionGuard, the evaluation metric here uses **PR-AUC** instead of F1-S
 
 This approach **maximizes recall while maintaining high precision**, ensuring the **lowest possible False Positive Rate (FPR)**.
 
-
+---
+## **Future Plans**
