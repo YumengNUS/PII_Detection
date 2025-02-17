@@ -87,4 +87,9 @@ Similar to LionGuard, the evaluation metric here uses **PR-AUC** instead of F1-S
 This approach **maximizes recall while maintaining high precision**, ensuring the **lowest possible False Positive Rate (FPR)**.
 
 ---
-## **Future Plans**
+## **VI. Future Plans**
+
+- **Expanding and Improving Test Data**: Increase the size and diversity of the test dataset by labeling more real-world PII examples. Add more edge cases.
+- **Enhancing PII Redaction Validation**: Develop an automated validation framework to check if redacted outputs correctly cover all sensitive information.
+- **Fine-Tuning Models with Localized Data**: Fine-tune BERT/RoBERTa on Singapore-specific PII patterns, including local names, addresses, and phone numbers.
+- **Optimizing Performance with More Compute Power**
