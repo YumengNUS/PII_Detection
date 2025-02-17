@@ -72,19 +72,13 @@ Similar to LionGuard, the evaluation metric here uses **PR-AUC** instead of F1-S
 2. **Contextual models (BERT/RoBERTa)** are **powerful in context-based recognition** but may suffer from false positives.
 3. **Singapore-specific data characteristics** require **customized rule enhancements**.
 
-### **🔹 Solution: A Hybrid Model**
 | **Model**    | **Strengths** | **Weaknesses** | **How We Use It** |
 |-------------|--------------|---------------|----------------|
 | **Presidio** |  Customizable, rule-based accuracy |  Lacks contextual understanding | **Primary detection model** with Singapore-specific constraints |
 | **BERT** |  Strong in contextual PII recognition |  Some false positives | **Used only for missing PII in Presidio** |
 | **RoBERTa** |  More optimized than BERT for NER |  Requires more compute | **Further refines Name detection** |
 
-### ** Step-by-Step Algorithm Flow**
- **Presidio first detects all possible PII** using **custom rules for Singapore data**.  
- **If Presidio fails to detect a PII entity**, **BERT/RoBERTa** are used to supplement missing detections.  
- **Final step: False Positive Filtering** ensures that non-PII words are not incorrectly masked.  
-
-This approach **maximizes recall while maintaining high precision**, ensuring the **lowest possible False Positive Rate (FPR)**.
+ 
 
 ---
 ## **VI. Future Plans**
