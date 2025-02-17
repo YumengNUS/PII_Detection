@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: pii
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    build: ./api
+    depends_on:
+      - postgres
+    mem_limit: 8g
+    cpus: 2.0 
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "dbname=pii user=postgres password=postgres host=postgres port=5432"
+
+  web:
+    build: ./web
+    depends_on:
+      - api
+    ports:
+      - "7860:7860"
