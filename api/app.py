@@ -48,6 +48,7 @@ address_recognizer = PatternRecognizer(supported_entity="ADDRESS", patterns=[add
 presidio_analyzer.registry.add_recognizer(address_recognizer)
 
 # Initialize BERT & RoBERTa
+'''
 model_paths = {
     "BERT": "/app/bert-ner",
     "RoBERTa": "/app/roberta-ner"
@@ -55,7 +56,7 @@ model_paths = {
 tokenizers = {name: AutoTokenizer.from_pretrained(path) for name, path in model_paths.items()}
 models = {name: AutoModelForTokenClassification.from_pretrained(path, ignore_mismatched_sizes=True) for name, path in model_paths.items()}
 pipelines = {name: pipeline("ner", model=models[name], tokenizer=tokenizers[name], aggregation_strategy="simple") for name in models}
-
+'''
 # Database connection
 DATABASE_URL = "dbname=pii user=postgres password=postgres host=postgres port=5432"
 conn = psycopg2.connect(DATABASE_URL)
@@ -85,6 +86,7 @@ def redact_text(request: PIIRequest):
         entity_map[word] = entity_type
 
     # Supplement NAME detection with BERT/RoBERTa
+    '''
     bert_results = pipelines["BERT"](text)
     roberta_results = pipelines["RoBERTa"](text)
 
@@ -93,7 +95,7 @@ def redact_text(request: PIIRequest):
             word = entity["word"]
             if word not in entity_map:
                 entity_map[word] = "NAME"
-
+    '''
     # Replace detected PII with placeholders
     redacted_text = text
     for word, pii_type in entity_map.items():
